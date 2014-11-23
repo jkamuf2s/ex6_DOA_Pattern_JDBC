@@ -10,4 +10,5 @@ public interface ProductDao {
     public boolean deleteProduct(Product p); // DELETE
 
     public List<Product> getAllProducts();
+    public  List<Product> findForCustomer(int primK);
 }

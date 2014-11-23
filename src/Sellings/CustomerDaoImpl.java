@@ -50,7 +50,7 @@ public class CustomerDaoImpl implements CustomerDao{
     @Override
     public Customer findCustomerByPrimKey(Integer primKey) {
         String query = "INSERT INTO";
-        Customer customer = new Customer();
+        Customer customer = new Customer(1);
 
         try {
             DataBaseConnect.exeQurry(query);
@@ -85,8 +85,7 @@ public class CustomerDaoImpl implements CustomerDao{
             customerEntityList = DataBaseConnect.exeQurry(query);
 
             for (LinkedList<String> customerEntity : customerEntityList) {
-                Customer customer = new Customer();
-                customer.setPrimK(Integer.parseInt(customerEntity.get(0)));
+                Customer customer = new Customer(Integer.parseInt(customerEntity.get(0)));
                 customer.setFirstName(customerEntity.get(1));
                 customer.setLastName(customerEntity.get(2));
                 customerList.add(customer);
