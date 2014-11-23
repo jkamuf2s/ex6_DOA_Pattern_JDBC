@@ -98,4 +98,8 @@ public class CustomerDaoImpl implements CustomerDao{
         }
     }
 
+    public VirtualList<Product> getProductList(int id ){
+              return new VirtualList<Product>(id);
+    }
+
 }

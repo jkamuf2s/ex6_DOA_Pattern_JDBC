@@ -8,8 +8,7 @@ public class Customer {
     private int primK;
     private String lastName;
     private String firstName;
-
-    private List<Product> products = null;
+    private List products;
 
     public Customer(int primK) {
         this.primK = primK;
@@ -40,10 +39,7 @@ public class Customer {
     }
 
     public List<Product> getProducts() {
-        if ( products == null ) {
-            ProductDaoImpl pDao = ProductDaoImpl.getInstance();
-            products = pDao.findForCustomer(  this.getPrimK() );
-        }
+
         return products;
     }
 
