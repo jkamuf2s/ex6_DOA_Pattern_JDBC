@@ -8,7 +8,7 @@ public class Customer {
     private int primK;
     private String lastName;
     private String firstName;
-    private List products;
+    private List products = null;
 
     public Customer(int primK) {
         this.primK = primK;
@@ -40,6 +40,11 @@ public class Customer {
 
     public List<Product> getProducts() {
 
+        if(products == null){
+            CustomerDaoImpl cDao = CustomerDaoImpl.getInstance();
+            products = cDao.createProductList(primK);
+        }
+
         return products;
     }
 
@@ -51,8 +56,8 @@ public class Customer {
     public String toString() {
         String erg = "Costumer[";
 
-        erg += "lastName:'" + lastName + "'";
-        erg += "firstName:'" + firstName + "'";
+        erg += "lastName:'" + lastName + "' ";
+        erg += "firstName:'" + firstName + "' ";
         erg += "productsForCustomer:" + getProducts().toString();
 
         return erg += "]";

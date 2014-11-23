@@ -1,24 +1,39 @@
 package Sellings;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
-public class VirtualList<Product> implements List<Product>{
+public class VirtualList<Product> implements List<Product> {
 
     private List source;
     private int customerID;
-    public VirtualList( int id ) {
+
+    public VirtualList(int id) {
         this.customerID = id;
     }
 
+
     private List getSource() {
-        if (source == null ) {
+        if (source == null) {
             ProductDaoImpl pDao = ProductDaoImpl.getInstance();
-            source = pDao.findForCustomer(  this.customerID );
+            source = pDao.findForCustomer(this.customerID);
         }
         return source;
+    }
+
+    @Override
+    public String toString() {
+
+        String listString = "";
+        List productList = getSource();
+
+        for(Object product: productList) {
+            Product productInstance =    (Product) product;
+
+            listString+=productInstance.toString();
+        }
+
+        return listString;
+
     }
 
     @Override
@@ -53,7 +68,7 @@ public class VirtualList<Product> implements List<Product>{
 
     @Override
     public boolean add(Product product) {
-        return this.getSource().add( product );
+        return this.getSource().add(product);
     }
 
     @Override
@@ -93,7 +108,7 @@ public class VirtualList<Product> implements List<Product>{
 
     @Override
     public Product get(int index) {
-        return null;
+        return (Product) getSource().get(index);
     }
 
     @Override
