@@ -4,7 +4,7 @@ package Sellings;
 public class Product {
 
     private int primK;
-	private String productName;
+    private String productName;
 
     public int getPrimK() {
         return primK;
@@ -14,12 +14,21 @@ public class Product {
         this.primK = primK;
     }
 
-	public String getProductName() {
-		return productName;
-	}
+    public String getProductName() {
+        return productName;
+    }
 
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    @Override
+    public String toString() {
+        String erg = "Product[";
+
+        erg += "productName:'" + productName + "'";
+
+        return erg += "]";
+    }
 
 }

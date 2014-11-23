@@ -5,6 +5,7 @@ import java.util.List;
 import DB.DataBaseConnect;
 import Sellings.Customer;
 import Sellings.CustomerDaoImpl;
+import Sellings.Product;
 import Sellings.ProductDaoImpl;
 
 public class Client {
@@ -14,10 +15,18 @@ public class Client {
 		CustomerDaoImpl cDao = CustomerDaoImpl.getInstance();
 		ProductDaoImpl pDao = ProductDaoImpl.getInstance();
 
+
+        // get All Test
 		List<Customer> cs = cDao.getAllCostumers();
+        List<Product> ps = pDao.getAllProducts();
 
         for (Customer customerEntity : cs) {
             System.out.println(customerEntity.toString());
+
+        }
+
+        for (Product productEntity : ps) {
+            System.out.println(productEntity.toString());
 
         }
 
