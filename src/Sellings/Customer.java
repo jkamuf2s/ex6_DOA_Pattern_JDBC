@@ -3,7 +3,7 @@ package Sellings;
 // Data Transfer Object
 public class Customer {
 
-    private int primK = -1;
+    private int primK;
     private String lastName;
     private String firstName;
 

@@ -3,7 +3,7 @@ package Sellings;
 // Data Transfer Object
 public class Product {
 
-    private int primK = -1;
+    private int primK;
 	private String productName;
 
     public int getPrimK() {
