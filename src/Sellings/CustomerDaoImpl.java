@@ -23,10 +23,10 @@ public class CustomerDaoImpl implements CustomerDao{
 
     // CRUD interface(single Customer-Object)
     public boolean insertCustomer(Customer c) {
-        String Querry = "INSERT INTO";
+        String query = "INSERT INTO";
 
         try {
-            DataBaseConnect.exeQurry(Querry);
+            DataBaseConnect.exeQurry(query);
         } catch (Exception ex) {
             ex.printStackTrace();
             return false;
@@ -36,10 +36,10 @@ public class CustomerDaoImpl implements CustomerDao{
 
     @Override
     public boolean deleteCustomer(Customer c) {
-        String Querry = "DELETE FROM " + customerTable + " WHERE ID =" + c.getPrimK();
+        String query = "DELETE FROM " + customerTable + " WHERE ID =" + c.getPrimK();
 
         try {
-            DataBaseConnect.exeQurry(Querry);
+            DataBaseConnect.exeQurry(query);
             return true;
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -49,11 +49,11 @@ public class CustomerDaoImpl implements CustomerDao{
 
     @Override
     public Customer findCustomerByPrimKey(Integer primKey) {
-        String Querry = "INSERT INTO";
+        String query = "INSERT INTO";
         Customer customer = new Customer();
 
         try {
-            DataBaseConnect.exeQurry(Querry);
+            DataBaseConnect.exeQurry(query);
             return customer;
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -63,10 +63,10 @@ public class CustomerDaoImpl implements CustomerDao{
 
     @Override
     public boolean updateCustomer(Customer c) {
-        String Querry = "INSERT INTO";
+        String query = "INSERT INTO";
 
         try {
-            DataBaseConnect.exeQurry(Querry);
+            DataBaseConnect.exeQurry(query);
             return true;
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -76,13 +76,13 @@ public class CustomerDaoImpl implements CustomerDao{
 
     @Override
     public List<Customer> getAllCostumers() {
-        String Querry = "SELECT * FROM ex6.customer";
+        String query = "SELECT * FROM ex6.customer";
 
         LinkedList<LinkedList<String>> customerEntityList;
         LinkedList<Customer> customerList = new LinkedList<Customer>();
 
         try {
-            customerEntityList = DataBaseConnect.exeQurry(Querry);
+            customerEntityList = DataBaseConnect.exeQurry(query);
 
             for (LinkedList<String> customerEntity : customerEntityList) {
                 Customer customer = new Customer();

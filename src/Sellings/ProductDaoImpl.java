@@ -19,10 +19,10 @@ public class ProductDaoImpl implements ProductDao {
 
 	// CRUD interface(single Customer-Object)
 	public boolean insertProduct(Product p) {
-		String Querry = "INSERT INTO";
+		String query = "INSERT INTO";
 
 		try {
-			DataBaseConnect.exeQurry(Querry);
+			DataBaseConnect.exeQurry(query);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			return false;
