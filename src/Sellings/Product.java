@@ -1,16 +1,25 @@
 package Sellings;
 
+// Data Transfer Object
 public class Product {
 
-	private int primK = -1;
-	
-	private String Title;
+    private int primK = -1;
+	private String productName;
 
-	public String getTitle() {
-		return Title;
+    public int getPrimK() {
+        return primK;
+    }
+
+    public void setPrimK(int primK) {
+        this.primK = primK;
+    }
+
+	public String getProductName() {
+		return productName;
 	}
 
-	public void setTitle(String title) {
-		Title = title;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
+
 }

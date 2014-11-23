@@ -1,13 +1,19 @@
 package Sellings;
 
+// Data Transfer Object
 public class Customer {
 
-
-
     private int primK = -1;
-
     private String lastName;
     private String firstName;
+
+    public int getPrimK() {
+        return primK;
+    }
+
+    public void setPrimK(int primK) {
+        this.primK = primK;
+    }
 
     public String getLastName() {
         return lastName;
@@ -35,17 +41,4 @@ public class Customer {
         return erg += "]";
     }
 
-    public void setPrimK(int primK) {
-        this.primK = primK;
-    }
-
-
-    public int getPrimK() {
-        StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
-        if (stackTraceElements.length != 0) {
-            return primK;
-        } else {
-            throw new IllegalAccessError("You are not allowed to call this method!!");
-        }
-    }
 }

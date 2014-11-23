@@ -42,7 +42,7 @@ public class Client {
 //		List<Product> ps = pDao.getAllProducts();
 //		// C
 //		Product p = new Product();
-//		p.setTitle("Haus");
+//		p.setProductName("Haus");
 //		pDao.insertProduct(p);
 //
 //		// R
@@ -50,7 +50,7 @@ public class Client {
 //		System.out.println(p.toString());
 //
 //		// U
-//		p.setTitle("PC");
+//		p.setProductName("PC");
 //		pDao.updateProduct(p);
 //
 //		// D
