@@ -23,11 +23,11 @@ public class VirtualList<Product> implements List<Product> {
     @Override
     public String toString() {
 
-        String listString = "";
+        String listString=null;
         List productList = getSource();
 
         for(Object product: productList) {
-            Product productInstance =    (Product) product;
+            Product productInstance = (Product) product;
 
             listString+=productInstance.toString();
         }
