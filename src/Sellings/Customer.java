@@ -5,19 +5,24 @@ import java.util.List;
 // Data Transfer Object
 public class Customer {
 
-    private int primK;
+    private Integer primK = null;
     private String lastName;
     private String firstName;
     private List products = null;
 
-    public Customer(){
+    public Customer() {
     }
 
     public int getPrimK() {
-        return primK;
+
+        if (primK != null) {
+            return primK;
+        } else {
+            throw new IllegalAccessError("Primary Key not set by database");
+        }
     }
 
-    public void setPrimK(int primK) {
+    protected void setPrimK(int primK) {
         this.primK = primK;
     }
 
@@ -39,7 +44,7 @@ public class Customer {
 
     public List<Product> getProducts() {
 
-        if(products == null){
+        if (products == null) {
             CustomerDaoImpl cDao = CustomerDaoImpl.getInstance();
             products = cDao.createProductList(primK);
         }
