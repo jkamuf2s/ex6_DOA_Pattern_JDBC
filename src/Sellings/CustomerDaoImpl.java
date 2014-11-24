@@ -23,24 +23,18 @@ public class CustomerDaoImpl implements CustomerDao{
 
     // CRUD interface(single Customer-Object)
     public boolean insertCustomer(Customer c) {
-        String query = "INSERT INTO ex6.customer (firstname, lastname) VALUES ( '"+ c.getFirstName() + "','"+ c.getLastName()+"' )";
-
+        String query = "INSERT INTO ex6.customer (firstname, lastname) VALUES ( '"+ c.getFirstName() + "','"+ c.getLastName()+"' ) RETURNING id";
+        LinkedList<LinkedList<String>> customerIDList;
 
         try {
-            DataBaseConnect.exeUpdate(query);
+            customerIDList = DataBaseConnect.exeQurry(query);
+            c.setPrimK(Integer.parseInt(customerIDList.getFirst().get(0)));
         } catch (Exception ex) {
             ex.printStackTrace();
             return false;
         }
 
-        query = "SELECT currval('ex6.customer_ID_seq')";
 
-        try {
-            DataBaseConnect.exeQurry(query);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return false;
-        }
 
         return true;
     }
@@ -83,10 +77,10 @@ public class CustomerDaoImpl implements CustomerDao{
 
     @Override
     public boolean updateCustomer(Customer c) {
-        String query = "INSERT INTO ex.6customer";
+        String query = "UPDATE ex6.customer SET firstname ='" + c.getFirstName() + "', lastname ='" + c.getLastName() + "' WHERE id ="+ c.getPrimK();
 
         try {
-            DataBaseConnect.exeQurry(query);
+            DataBaseConnect.exeUpdate(query);
             return true;
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -37,12 +37,12 @@ public class Client {
 		cDao.insertCustomer(c);
 ////
 ////		// R
-////		c = cs.get(0);
-////		System.out.println(c.toString());
+		c = cDao.findCustomerByPrimKey(7);
+		System.out.println(c.toString());
 ////
 ////		// U
-////		c.setFirstName("yila");
-////		cDao.updateCustomer(c);
+		c.setFirstName("yila");
+		cDao.updateCustomer(c);
 ////
 //		// D
 //		cDao.deleteCustomer(c);
