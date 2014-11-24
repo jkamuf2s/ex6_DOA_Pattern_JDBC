@@ -23,7 +23,17 @@ public class CustomerDaoImpl implements CustomerDao{
 
     // CRUD interface(single Customer-Object)
     public boolean insertCustomer(Customer c) {
-        String query = "INSERT INTO";
+        String query = "INSERT INTO ex6.customer (firstname, lastname) VALUES ( '"+ c.getFirstName() + "','"+ c.getLastName()+"' )";
+
+
+        try {
+            DataBaseConnect.exeUpdate(query);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+
+        query = "SELECT currval('ex6.customer.id')";
 
         try {
             DataBaseConnect.exeQurry(query);
@@ -31,12 +41,13 @@ public class CustomerDaoImpl implements CustomerDao{
             ex.printStackTrace();
             return false;
         }
+
         return true;
     }
 
     @Override
     public boolean deleteCustomer(Customer c) {
-        String query = "DELETE FROM " + customerTable + " WHERE ID =" + c.getPrimK();
+        String query = "DELETE FROM  ex6.customer WHERE ID =" + c.getPrimK();
 
         try {
             DataBaseConnect.exeQurry(query);
@@ -50,7 +61,7 @@ public class CustomerDaoImpl implements CustomerDao{
     @Override
     public Customer findCustomerByPrimKey(Integer primKey) {
         String query = "INSERT INTO";
-        Customer customer = new Customer(1);
+        Customer customer = new Customer();
 
         try {
             DataBaseConnect.exeQurry(query);
@@ -63,7 +74,7 @@ public class CustomerDaoImpl implements CustomerDao{
 
     @Override
     public boolean updateCustomer(Customer c) {
-        String query = "INSERT INTO";
+        String query = "INSERT INTO ex.6customer";
 
         try {
             DataBaseConnect.exeQurry(query);
@@ -85,7 +96,8 @@ public class CustomerDaoImpl implements CustomerDao{
             customerEntityList = DataBaseConnect.exeQurry(query);
 
             for (LinkedList<String> customerEntity : customerEntityList) {
-                Customer customer = new Customer(Integer.parseInt(customerEntity.get(0)));
+                Customer customer = new Customer();
+                customer.setPrimK(Integer.parseInt(customerEntity.get(0)));
                 customer.setFirstName(customerEntity.get(1));
                 customer.setLastName(customerEntity.get(2));
                 customerList.add(customer);

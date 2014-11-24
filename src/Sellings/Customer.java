@@ -10,8 +10,7 @@ public class Customer {
     private String firstName;
     private List products = null;
 
-    public Customer(int primK) {
-        this.primK = primK;
+    public Customer(){
     }
 
     public int getPrimK() {

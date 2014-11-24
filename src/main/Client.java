@@ -14,36 +14,36 @@ public class Client {
 
 		CustomerDaoImpl cDao = CustomerDaoImpl.getInstance();
 		ProductDaoImpl pDao = ProductDaoImpl.getInstance();
-
-
-        // get All Test
-		List<Customer> cs = cDao.getAllCostumers();
-        List<Product> ps = pDao.getAllProducts();
-
-        for (Customer customerEntity : cs) {
-            System.out.println(customerEntity.toString());
-
-        }
-
-        for (Product productEntity : ps) {
-            System.out.println(productEntity.toString());
-
-        }
-
-//		// C
-//		Customer c = new Customer();
-//		c.setLastName("Regina");
-//		c.setFirstName("Richter");
-//		cDao.insertCustomer(c);
 //
-//		// R
-//		c = cs.get(0);
-//		System.out.println(c.toString());
 //
-//		// U
-//		c.setFirstName("yila");
-//		cDao.updateCustomer(c);
+//        // get All Test
+//		List<Customer> cs = cDao.getAllCostumers();
+//        List<Product> ps = pDao.getAllProducts();
 //
+//        for (Customer customerEntity : cs) {
+//            System.out.println(customerEntity.toString());
+//
+//        }
+//
+//        for (Product productEntity : ps) {
+//            System.out.println(productEntity.toString());
+//
+//        }
+
+		// C
+		Customer c = new Customer();
+		c.setLastName("Regina");
+		c.setFirstName("Richter");
+		cDao.insertCustomer(c);
+////
+////		// R
+////		c = cs.get(0);
+////		System.out.println(c.toString());
+////
+////		// U
+////		c.setFirstName("yila");
+////		cDao.updateCustomer(c);
+////
 //		// D
 //		cDao.deleteCustomer(c);
 //

@@ -51,4 +51,14 @@ public class DataBaseConnect {
 
 	}
 
+    public static void exeUpdate(String querry) throws SQLException  {
+
+        Connection con = DriverManager.getConnection(dbLocation, prop);
+
+        Statement stat = con.createStatement();
+        stat.executeUpdate(querry);
+
+
+    }
+
 }
