@@ -33,7 +33,7 @@ public class CustomerDaoImpl implements CustomerDao{
             return false;
         }
 
-        query = "SELECT currval('ex6.customer.id')";
+        query = "SELECT currval('ex6.customer_ID_seq')";
 
         try {
             DataBaseConnect.exeQurry(query);
@@ -60,12 +60,21 @@ public class CustomerDaoImpl implements CustomerDao{
 
     @Override
     public Customer findCustomerByPrimKey(Integer primKey) {
-        String query = "INSERT INTO";
+        String query = "SELECT * FROM ex6.customer WHERE id="+primKey;
+        LinkedList<LinkedList<String>> customerEntityList;
         Customer customer = new Customer();
 
         try {
-            DataBaseConnect.exeQurry(query);
+            customerEntityList = DataBaseConnect.exeQurry(query);
+
+
+            customer.setPrimK(Integer.parseInt(customerEntityList.getFirst().get(0)));
+            customer.setFirstName(customerEntityList.getFirst().get(1));
+            customer.setLastName(customerEntityList.getFirst().get(2));
+
+
             return customer;
+
         } catch (Exception ex) {
             ex.printStackTrace();
             return customer;
