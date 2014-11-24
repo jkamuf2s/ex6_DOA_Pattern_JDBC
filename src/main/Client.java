@@ -10,10 +10,10 @@ import Sellings.ProductDaoImpl;
 
 public class Client {
     public static void main(String[] args) {
-		DataBaseConnect.init();
 
-		CustomerDaoImpl cDao = CustomerDaoImpl.getInstance();
-		ProductDaoImpl pDao = ProductDaoImpl.getInstance();
+        DataBaseConnect.init();
+
+        CustomerDaoImpl cDao = CustomerDaoImpl.getInstance();
 //
 //
 //        // get All Test
@@ -30,22 +30,33 @@ public class Client {
 //
 //        }
 
-		// C
-		Customer c = new Customer();
-		c.setLastName("Regina");
-		c.setFirstName("Richter");
-		cDao.insertCustomer(c);
-////
-////		// R
-		c = cDao.findCustomerByPrimKey(7);
-		System.out.println(c.toString());
-////
-////		// U
-		c.setFirstName("yila");
-		cDao.updateCustomer(c);
-////
-//		// D
-//		cDao.deleteCustomer(c);
+        // CREATE
+        Customer customer1 = new Customer();
+        customer1.setLastName("Miriam");
+        customer1.setFirstName("Musterfrau");
+        cDao.insertCustomer(customer1);
+
+        // UPDATE
+        customer1.setFirstName("Max");
+        customer1.setLastName("Mustermann");
+        cDao.updateCustomer(customer1);
+
+        // READ
+        customer1 = cDao.findCustomerByPrimKey(customer1.getPrimK());
+        System.out.println(customer1.toString());
+
+
+
+        // DELETE
+        cDao.deleteCustomer(customer1);
+
+        // get All Test
+        List<Customer> cs = cDao.getAllCostumers();
+        System.out.println("Now all customers who are still in the table:");
+        for (Customer customerEntity : cs) {
+            System.out.println(customerEntity.toString());
+
+        }
 //
 //
 //		List<Product> ps = pDao.getAllProducts();
@@ -66,6 +77,6 @@ public class Client {
 //		pDao.deleteProduct(p);
 
 
-	}
+    }
 
 }

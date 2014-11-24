@@ -44,7 +44,7 @@ public class CustomerDaoImpl implements CustomerDao{
         String query = "DELETE FROM  ex6.customer WHERE ID =" + c.getPrimK();
 
         try {
-            DataBaseConnect.exeQurry(query);
+            DataBaseConnect.exeUpdate(query);
             return true;
         } catch (Exception ex) {
             ex.printStackTrace();
