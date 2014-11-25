@@ -2,7 +2,7 @@ package Sellings;
 
 import java.util.*;
 
-public class VirtualList<Product> implements List<Product> {
+public class VirtualList<E> implements List<E> {
 
     private List source;
     private int customerID;
@@ -20,25 +20,10 @@ public class VirtualList<Product> implements List<Product> {
         return source;
     }
 
-    @Override
-    public String toString() {
-
-        String listString=null;
-        List productList = getSource();
-
-        for(Object product: productList) {
-            Product productInstance = (Product) product;
-
-            listString+=productInstance.toString();
-        }
-
-        return listString;
-
-    }
 
     @Override
     public int size() {
-        return 0;
+        return this.getSource().size();
     }
 
     @Override
@@ -52,7 +37,7 @@ public class VirtualList<Product> implements List<Product> {
     }
 
     @Override
-    public Iterator<Product> iterator() {
+    public Iterator<E> iterator() {
         return null;
     }
 
@@ -67,8 +52,8 @@ public class VirtualList<Product> implements List<Product> {
     }
 
     @Override
-    public boolean add(Product product) {
-        return this.getSource().add(product);
+    public boolean add(E e) {
+        return this.getSource().add(e);
     }
 
     @Override
@@ -82,12 +67,12 @@ public class VirtualList<Product> implements List<Product> {
     }
 
     @Override
-    public boolean addAll(Collection<? extends Product> c) {
+    public boolean addAll(Collection<? extends E> c) {
         return false;
     }
 
     @Override
-    public boolean addAll(int index, Collection<? extends Product> c) {
+    public boolean addAll(int index, Collection<? extends E> c) {
         return false;
     }
 
@@ -107,22 +92,23 @@ public class VirtualList<Product> implements List<Product> {
     }
 
     @Override
-    public Product get(int index) {
-        return (Product) getSource().get(index);
+    @SuppressWarnings("unchecked")
+    public E get(int index) {
+        return (E) getSource().get(index);
     }
 
     @Override
-    public Product set(int index, Product element) {
+    public E set(int index, E element) {
         return null;
     }
 
     @Override
-    public void add(int index, Product element) {
+    public void add(int index, E element) {
 
     }
 
     @Override
-    public Product remove(int index) {
+    public E remove(int index) {
         return null;
     }
 
@@ -137,17 +123,17 @@ public class VirtualList<Product> implements List<Product> {
     }
 
     @Override
-    public ListIterator<Product> listIterator() {
+    public ListIterator<E> listIterator() {
         return null;
     }
 
     @Override
-    public ListIterator<Product> listIterator(int index) {
+    public ListIterator<E> listIterator(int index) {
         return null;
     }
 
     @Override
-    public List<Product> subList(int fromIndex, int toIndex) {
+    public List<E> subList(int fromIndex, int toIndex) {
         return null;
     }
 }

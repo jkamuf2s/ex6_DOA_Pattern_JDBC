@@ -56,13 +56,35 @@ public class Customer {
         this.products = products;
     }
 
+    public void listAllProducts(){
+
+        if (products == null) {
+            CustomerDaoImpl cDao = CustomerDaoImpl.getInstance();
+            products = cDao.createProductList(primK);
+        }
+
+        for (int i=0; i < products.size();i++) {
+            System.out.println(products.get(i).toString());
+
+        }
+    }
+
     @Override
     public String toString() {
         String erg = "Costumer[";
 
         erg += "lastName:'" + lastName + "' ";
         erg += "firstName:'" + firstName + "' ";
-        erg += "productsForCustomer:" + getProducts().toString();
+        erg += "productsForCustomer:" ;
+
+        if (products == null) {
+            CustomerDaoImpl cDao = CustomerDaoImpl.getInstance();
+            products = cDao.createProductList(primK);
+        }
+        for (int i=0; i < products.size();i++) {
+            erg +=products.get(i).toString();
+
+        }
 
         return erg += "]";
     }
