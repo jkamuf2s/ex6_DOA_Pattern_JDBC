@@ -20,8 +20,8 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	// CRUD interface(single Customer-Object)
-	public boolean insertProduct(Product p) {
-        String query = "INSERT INTO ex6.product (description) VALUES ( '"+ p.getProductName() +" ' ) RETURNING id";
+	public boolean insertProduct(Product p, int customerPkey) {
+        String query = "INSERT INTO ex6.product (description, customerid) SELECT ( '"+ p.getProductName() +"','"+customerPkey+" ' ) WHERE NOT EXISTS(SELECT id FROM ex6.product WHERE id = 1) RETURNING id";
         LinkedList<LinkedList<String>> productIDList;
 
         try {

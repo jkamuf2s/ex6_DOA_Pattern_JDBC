@@ -35,6 +35,15 @@ public class CustomerDaoImpl implements CustomerDao{
         }
 
 
+        // insert Products for customer
+        ProductDaoImpl pDao = ProductDaoImpl.getInstance();
+
+        for (Product productEntity : c.getProducts()) {
+            pDao.insertProduct(productEntity,c.getPrimK());
+
+        }
+
+
 
         return true;
     }
@@ -81,11 +90,28 @@ public class CustomerDaoImpl implements CustomerDao{
 
         try {
             DataBaseConnect.exeUpdate(query);
-            return true;
+
         } catch (Exception ex) {
             ex.printStackTrace();
             return false;
         }
+
+
+        // update existing Products for customer
+        ProductDaoImpl pDao = ProductDaoImpl.getInstance();
+
+        for (Product productEntity : c.getProducts()) {
+            pDao.updateProduct(productEntity);
+
+        }
+
+        // insert new and only new products
+        for (Product productEntity : c.getProducts()) {
+            pDao.insertProduct(productEntity,c.getPrimK());
+
+        }
+
+        return true;
     }
 
     @Override
