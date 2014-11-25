@@ -10,7 +10,7 @@ public class Product {
         return primK;
     }
 
-    public void setPrimK(int primK) {
+    protected void setPrimK(int primK) {
         this.primK = primK;
     }
 

@@ -20,27 +20,66 @@ public class ProductDaoImpl implements ProductDao {
 
 	// CRUD interface(single Customer-Object)
 	public boolean insertProduct(Product p) {
-		String query = "INSERT INTO";
+        String query = "INSERT INTO ex6.product (description) VALUES ( '"+ p.getProductName() +" ' ) RETURNING id";
+        LinkedList<LinkedList<String>> productIDList;
 
-		try {
-			DataBaseConnect.exeQurry(query);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			return false;
-		}
-		return true;
+        try {
+            productIDList = DataBaseConnect.exeQurry(query);
+            p.setPrimK(Integer.parseInt(productIDList.getFirst().get(0)));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+
+
+
+        return true;
 	}
 
 	public boolean deleteProduct(Product p) {
-		return false;
+        String query = "DELETE FROM  ex6.product WHERE ID =" + p.getPrimK();
+
+        try {
+            DataBaseConnect.exeUpdate(query);
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
 	}
 
-	public Customer findProductByPrimKey(Integer primKey) {
-		return null;
+	public Product findProductByPrimKey(Integer primKey) {
+        String query = "SELECT id, description FROM ex6.product WHERE id= "+primKey;
+        LinkedList<LinkedList<String>> productEntityList;
+        Product product = new Product();
+
+        try {
+            productEntityList = DataBaseConnect.exeQurry(query);
+
+
+            product.setPrimK(Integer.parseInt(productEntityList.getFirst().get(0)));
+            product.setProductName(productEntityList.getFirst().get(1));
+
+
+
+            return product;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return product;
+        }
 	}
 
 	public boolean updateProduct(Product p) {
-		return false;
+        String query = "UPDATE ex6.product SET description ='" + p.getProductName() + "' WHERE id ="+ p.getPrimK();
+
+        try {
+            DataBaseConnect.exeUpdate(query);
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
 	}
 
 	public List<Product> getAllProducts() {

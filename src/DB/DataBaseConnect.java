@@ -12,7 +12,6 @@ import java.util.Properties;
 public class DataBaseConnect {
 
 	private static String dbLocation = "jdbc:postgresql://dumbo.inf.h-brs.de/";
-	public static String sceemName = "product";
 
 	private static Properties prop = new Properties();
 

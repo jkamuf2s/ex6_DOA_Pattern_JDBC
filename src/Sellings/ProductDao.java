@@ -5,7 +5,7 @@ import java.util.List;
 public interface ProductDao {
 
     public boolean insertProduct(Product p); // CREATE
-    public Customer findProductByPrimKey(Integer primKey); // READ
+    public Product findProductByPrimKey(Integer primKey); // READ
     public boolean updateProduct(Product p); // UPDATE
     public boolean deleteProduct(Product p); // DELETE
 
