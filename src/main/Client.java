@@ -11,10 +11,9 @@ public class Client {
         DataBaseConnect.init();
 
 
-
-/*        // Tests for customer
+        // Tests for customer
+        System.out.println("CRUD Tests for customer:");
         CustomerDaoImpl cDao = CustomerDaoImpl.getInstance();
-
 
         // CREATE
         Customer customer1 = new Customer();
@@ -32,7 +31,6 @@ public class Client {
         System.out.println(customer1.toString());
 
 
-
         // DELETE
         cDao.deleteCustomer(customer1);
 
@@ -42,10 +40,11 @@ public class Client {
         for (Customer customerEntity : cs) {
             System.out.println(customerEntity.toString());
 
-        }*/
+        }
 
 
         // Tests for product
+        System.out.println("CRUD Tests for products:");
         ProductDaoImpl pDao = ProductDaoImpl.getInstance();
 
         // CREATE
